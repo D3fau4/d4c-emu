@@ -22,3 +22,9 @@ public class SystemUpdateMetas
         title_version = versionVersion;
     }
 }
+
+public class required_system_update_meta
+{
+    public string contents_delivery_required_title_id;
+    public uint contents_delivery_required_title_version;
+}

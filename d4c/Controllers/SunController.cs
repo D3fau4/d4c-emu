@@ -36,7 +36,7 @@ public class SunController : ControllerBase
                 };
                 meta.system_update_metas.Add(new SystemUpdateMetas("0100000000000816", nca.Version.Version));
 
-                return meta;
+                return Ok(meta);
             }
             continue;
         }

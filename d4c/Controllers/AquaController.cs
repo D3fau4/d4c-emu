@@ -9,7 +9,7 @@ public class AquaController : ControllerBase
 {
     [HttpGet("required_system_update_meta")]
     [ETagFilter(200)]
-    public ActionResult<string> GetLastestMandatoryUpdate(string device_id = "DEADCAFEBABEBEEF")
+    public ActionResult<required_system_update_meta> GetLastestMandatoryUpdate(string device_id = "DEADCAFEBABEBEEF")
     {
         /* nintendo Headers */
         HttpContext.Response.Headers.Add("Connection", "keep-alive");
@@ -18,6 +18,22 @@ public class AquaController : ControllerBase
         if (!Horizon.ValidDeviceID(Convert.ToUInt64($"0x{device_id}",16)))
             return  StatusCode(StatusCodes.Status403Forbidden);
         
-        return Ok("{\"contents_delivery_required_title_id\":\"0100000000000816\",\"contents_delivery_required_title_version\":873463968}");
+        foreach (var nca in Horizon.hos.ncafolder.Titles.Values.OrderBy(x => x.Id))
+        {
+            if (nca.Id == 0x0100000000000816ul)
+            {
+                required_system_update_meta meta = new required_system_update_meta
+                {
+                    contents_delivery_required_title_id = "0100000000000816",
+                    contents_delivery_required_title_version = nca.Version.Version
+                };
+
+                return Ok(meta);
+            }
+            continue;
+        }
+        
+        // Return last update
+        return  StatusCode(StatusCodes.Status404NotFound);
     }
 }
