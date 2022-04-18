@@ -14,15 +14,15 @@ public class AquaController : ControllerBase
         /* nintendo Headers */
         HttpContext.Response.Headers.Add("Connection", "keep-alive");
         /* nintendo Headers */
-        
-        if (!Horizon.ValidDeviceID(Convert.ToUInt64($"0x{device_id}",16)))
-            return  StatusCode(StatusCodes.Status403Forbidden);
-        
+
+        if (!Horizon.ValidDeviceID(Convert.ToUInt64($"0x{device_id}", 16)))
+            return StatusCode(StatusCodes.Status403Forbidden);
+
         foreach (var nca in Horizon.hos.ncafolder.Titles.Values.OrderBy(x => x.Id))
         {
             if (nca.Id == 0x0100000000000816ul)
             {
-                required_system_update_meta meta = new required_system_update_meta
+                var meta = new required_system_update_meta
                 {
                     contents_delivery_required_title_id = "0100000000000816",
                     contents_delivery_required_title_version = nca.Version.Version
@@ -30,10 +30,9 @@ public class AquaController : ControllerBase
 
                 return Ok(meta);
             }
-            continue;
         }
-        
+
         // Return last update
-        return  StatusCode(StatusCodes.Status404NotFound);
+        return StatusCode(StatusCodes.Status404NotFound);
     }
 }

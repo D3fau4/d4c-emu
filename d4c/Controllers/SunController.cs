@@ -1,7 +1,4 @@
-using System.Text;
-using System.Text.Json;
 using d4c.HOS;
-using LibHac.Tools.Fs;
 using Microsoft.AspNetCore.Mvc;
 
 namespace d4c.Controllers;
@@ -15,22 +12,22 @@ public class SunController : ControllerBase
     public ActionResult<SystemUpdateMeta> GetLastestUpdate(string device_id = "DEADCAFEBABEBEEF")
     {
         /* nintendo Headers */
-        HttpContext.Response.Headers.Add("X-Content-Type-Options","nosniff");
+        HttpContext.Response.Headers.Add("X-Content-Type-Options", "nosniff");
         HttpContext.Response.Headers.Add("X-Frame-Options", "DENY");
-        HttpContext.Response.Headers.Add("X-XSS-Protection","1; mode=block");
-        HttpContext.Response.Headers.Add("x-nintendo-akamai-reference-id","0.7e251102.1650278892.589bfbdb");
+        HttpContext.Response.Headers.Add("X-XSS-Protection", "1; mode=block");
+        HttpContext.Response.Headers.Add("x-nintendo-akamai-reference-id", "0.7e251102.1650278892.589bfbdb");
         HttpContext.Response.Headers.Add("Cache-Control", "no-cache, no-store, must-revalidate");
         HttpContext.Response.Headers.Add("Connection", "keep-alive");
         /* nintendo Headers */
-        
-        if (!Horizon.ValidDeviceID(Convert.ToUInt64($"0x{device_id}",16)))
-            return  StatusCode(StatusCodes.Status403Forbidden);
+
+        if (!Horizon.ValidDeviceID(Convert.ToUInt64($"0x{device_id}", 16)))
+            return StatusCode(StatusCodes.Status403Forbidden);
 
         foreach (var nca in Horizon.hos.ncafolder.Titles.Values.OrderBy(x => x.Id))
         {
             if (nca.Id == 0x0100000000000816ul)
             {
-                SystemUpdateMeta meta = new SystemUpdateMeta
+                var meta = new SystemUpdateMeta
                 {
                     timestamp = (int) DateTime.Now.ToBinary()
                 };
@@ -38,10 +35,9 @@ public class SunController : ControllerBase
 
                 return Ok(meta);
             }
-            continue;
         }
 
         // Return last update
-        return  StatusCode(StatusCodes.Status404NotFound);
+        return StatusCode(StatusCodes.Status404NotFound);
     }
 }
