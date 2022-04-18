@@ -1,3 +1,4 @@
+using System.Text;
 using d4c.HOS;
 using Microsoft.AspNetCore.Mvc;
 
@@ -94,22 +95,22 @@ public class AtumnController : ControllerBase
 
     #region NCA
 
-    [HttpGet("c/s/{contentid:long}/{version:long}")]
+    [HttpGet("c/s/{NcaId}")]
     [ETagFilter(200)]
-    public IActionResult GetSystemUpdateNca(string contentid = "0100000000000816", string version = "940572692")
+    public IActionResult GetSystemUpdateNca(string NcaId = "eef23e6017719c46c6f8bbecdd53da77")
     {
         /* nintendo Headers */
         HttpContext.Response.Headers.Add("x-nintendo-akamai-reference-id", "0.7e251102.1650278892.589bfbdb");
         /* nintendo Headers */
 
-        foreach (var nca in Horizon.hos.ncafolder.Titles.Values.OrderBy(x => x.Id))
+        foreach (var nca in Horizon.hos.ncafolder.Ncas.Values)
         {
-            if (nca.Id == Convert.ToUInt64($"0x{contentid}", 16))
+            if (nca.NcaId.ToLower().Equals(NcaId))
             {
-                HttpContext.Response.Headers.Add("X-Nintendo-Content-ID", nca.MetaNca.NcaId);
+                HttpContext.Response.Headers.Add("X-Nintendo-Content-ID", nca.NcaId);
                 HttpContext.Response.Headers.Add("X-Nintendo-Content-Hash",
-                    Horizon.SHA256CheckSum(Path.Combine(Horizon.hos.NcaFolderPath, nca.MetaNca.Filename)));
-                return File(System.IO.File.ReadAllBytes(Path.Combine(Horizon.hos.NcaFolderPath, nca.MetaNca.Filename)),
+                    Horizon.SHA256CheckSum(Path.Combine(Horizon.hos.NcaFolderPath, nca.Filename)));
+                return File(System.IO.File.ReadAllBytes(Path.Combine(Horizon.hos.NcaFolderPath, nca.Filename)),
                     "application/octet-stream");
             }
         }
@@ -117,22 +118,22 @@ public class AtumnController : ControllerBase
         return NotFound();
     }
     
-    [HttpGet("c/a/{contentid:long}/{version:long}")]
+    [HttpGet("c/a/{NcaId}")]
     [ETagFilter(200)]
-    public IActionResult GetMetaNca(string contentid = "0100000000000816", string version = "940572692")
+    public IActionResult GetMetaNca(string NcaId = "eef23e6017719c46c6f8bbecdd53da77")
     {
         /* nintendo Headers */
         HttpContext.Response.Headers.Add("x-nintendo-akamai-reference-id", "0.7e251102.1650278892.589bfbdb");
         /* nintendo Headers */
 
-        foreach (var nca in Horizon.hos.ncafolder.Titles.Values.OrderBy(x => x.Id))
+        foreach (var nca in Horizon.hos.ncafolder.Ncas.Values)
         {
-            if (nca.Id == Convert.ToUInt64($"0x{contentid}", 16))
+            if (nca.NcaId.ToLower().Equals(NcaId))
             {
-                HttpContext.Response.Headers.Add("X-Nintendo-Content-ID", nca.MetaNca.NcaId);
+                HttpContext.Response.Headers.Add("X-Nintendo-Content-ID", nca.NcaId);
                 HttpContext.Response.Headers.Add("X-Nintendo-Content-Hash",
-                    Horizon.SHA256CheckSum(Path.Combine(Horizon.hos.NcaFolderPath, nca.MetaNca.Filename)));
-                return File(System.IO.File.ReadAllBytes(Path.Combine(Horizon.hos.NcaFolderPath, nca.MetaNca.Filename)),
+                    Horizon.SHA256CheckSum(Path.Combine(Horizon.hos.NcaFolderPath, nca.Filename)));
+                return File(System.IO.File.ReadAllBytes(Path.Combine(Horizon.hos.NcaFolderPath, nca.Filename)),
                     "application/octet-stream");
             }
         }
@@ -140,23 +141,21 @@ public class AtumnController : ControllerBase
         return NotFound();
     }
     
-    [HttpGet("c/c/{contentid:long}/{version:long}")]
+    [HttpGet("c/c/{NcaId}")]
     [ETagFilter(200)]
-    public IActionResult GetProgramNca(string contentid = "0100000000000816", string version = "940572692")
+    public IActionResult GetProgramNca(string NcaId = "eef23e6017719c46c6f8bbecdd53da77")
     {
         /* nintendo Headers */
         HttpContext.Response.Headers.Add("x-nintendo-akamai-reference-id", "0.7e251102.1650278892.589bfbdb");
-        /* nintendo Headers */
-
-        foreach (var nca in Horizon.hos.ncafolder.Titles.Values.OrderBy(x => x.Id))
+        foreach (var nca in Horizon.hos.ncafolder.Ncas.Values)
         {
-            if (nca.Id == Convert.ToUInt64($"0x{contentid}", 16))
+            if (nca.NcaId.ToLower().Equals(NcaId))
             {
-                HttpContext.Response.Headers.Add("X-Nintendo-Content-ID", nca.MainNca.NcaId);
-                HttpContext.Response.Headers.Add("X-Nintendo-Content-Hash",
-                    Horizon.SHA256CheckSum(Path.Combine(Horizon.hos.NcaFolderPath, nca.MainNca.Filename)));
-                return File(System.IO.File.ReadAllBytes(Path.Combine(Horizon.hos.NcaFolderPath, nca.MainNca.Filename)),
-                    "application/octet-stream");
+                    HttpContext.Response.Headers.Add("X-Nintendo-Content-ID", nca.NcaId);
+                    HttpContext.Response.Headers.Add("X-Nintendo-Content-Hash",
+                        Horizon.SHA256CheckSum(Path.Combine(Horizon.hos.NcaFolderPath, nca.Filename)));
+                    return File(System.IO.File.ReadAllBytes(Path.Combine(Horizon.hos.NcaFolderPath, nca.Filename)),
+                        "application/octet-stream");
             }
         }
 
