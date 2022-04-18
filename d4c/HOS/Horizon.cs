@@ -1,3 +1,4 @@
+using System.Security.Cryptography;
 using LibHac;
 using LibHac.Common.Keys;
 using LibHac.FsSystem;
@@ -9,6 +10,7 @@ public class Horizon
 {
     public HorizonClient horizon;
     public KeySet keys;
+    public string NcaFolderPath;
     public static Horizon? hos;
     public SwitchFs ncafolder;
 
@@ -24,6 +26,7 @@ public class Horizon
         var LocalFS = new LocalFileSystem(ncasfolder);
         ncafolder = SwitchFs.OpenNcaDirectory(keys, LocalFS);
         Console.WriteLine("Loaded!");
+        NcaFolderPath = ncasfolder;
         hos = this;
     }
 
@@ -45,5 +48,14 @@ public class Horizon
             return false;
         
         return true;
+    }
+    
+    public static string SHA256CheckSum(string filePath)
+    {
+        using (SHA256 SHA256 = SHA256Managed.Create())
+        {
+            using (FileStream fileStream = File.OpenRead(filePath))
+                return BitConverter.ToString(SHA256.ComputeHash(fileStream)).Replace("-","");
+        }
     }
 }
