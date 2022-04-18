@@ -11,8 +11,17 @@ public class SunController : ControllerBase
     [Route("system_update_meta")]
     public ActionResult<string> GetLastestUpdate(string device_id = "DEADCAFEBABEBEEF")
     {
-        if (device_id.Length < 16)
+        /* nintendo Headers */
+        HttpContext.Response.Headers.Add("X-Content-Type-Options","nosniff");
+        HttpContext.Response.Headers.Add("X-Frame-Options", "DENY");
+        HttpContext.Response.Headers.Add("X-XSS-Protection","1; mode=block");
+        HttpContext.Response.Headers.Add("x-nintendo-akamai-reference-id","0.7e251102.1650278892.589bfbdb");
+        HttpContext.Response.Headers.Add("Cache-Control", "no-cache, no-store, must-revalidate");
+        HttpContext.Response.Headers.Add("Connection", "keep-alive");
+        /* nintendo Headers */
+        if (device_id.Length != 16)
             return  StatusCode(StatusCodes.Status403Forbidden);
-        return Ok($"{device_id}");
+        // Return last update
+        return Ok("{\"timestamp\":1650278719,\"system_update_metas\":[{\"title_id\":\"0100000000000816\",\"title_version\":940572692}]}");
     }
 }
