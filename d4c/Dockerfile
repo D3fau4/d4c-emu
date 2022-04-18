@@ -17,4 +17,6 @@ RUN dotnet publish "d4c.csproj" -c Release -o /app/publish
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
+ADD "d4c/contents" /app
+ADD "d4c/prod.keys" /app/prod.keys
 ENTRYPOINT ["dotnet", "d4c.dll"]
