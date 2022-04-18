@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace sun.Controllers;
+namespace d4c.Controllers;
 
 [ApiController]
 [Route("v1/")]

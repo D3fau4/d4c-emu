@@ -5,13 +5,16 @@
     <projectFile profileName="IIS Express">sun/sun.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d572d94d-ad56-4c96-8228-9c4c749b1aed" name="Changes" comment="Setup">
-      <change afterPath="$PROJECT_DIR$/sun/Controllers/AquaController.cs" afterDir="false" />
-    </list>
+    <list default="true" id="d572d94d-ad56-4c96-8228-9c4c749b1aed" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/d4c/Program.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/d4c/Controllers/AquaController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/d4c/Controllers/SunController.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -30,9 +33,9 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunManager" selected=".NET Launch Settings Profile.sun">
-    <configuration name="sun" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
-      <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/sun/sun.csproj" />
+  <component name="RunManager" selected=".NET Launch Settings Profile.d4c">
+    <configuration name="d4c" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
+      <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/d4c/d4c.csproj" />
       <option name="LAUNCH_PROFILE_TFM" value="net6.0" />
       <option name="LAUNCH_PROFILE_NAME" value="sun" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
@@ -46,8 +49,8 @@
         <option name="Build" />
       </method>
     </configuration>
-    <configuration name="sun: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
-      <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/sun/sun.csproj" />
+    <configuration name="d4c: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
+      <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/d4c/d4c.csproj" />
       <option name="LAUNCH_PROFILE_TFM" value="net6.0" />
       <option name="LAUNCH_PROFILE_NAME" value="IIS Express" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
@@ -61,24 +64,24 @@
         <option name="Build" />
       </method>
     </configuration>
-    <configuration name="sun/Dockerfile" type="docker-deploy" factoryName="dockerfile" temporary="true" server-name="Docker">
+    <configuration name="d4c/Dockerfile: Compose Deployment" type="docker-deploy" factoryName="dockerfile" temporary="true" server-name="Docker">
       <deployment type="dockerfile">
         <settings>
           <option name="containerName" value="" />
           <option name="contextFolderPath" value="." />
-          <option name="sourceFilePath" value="sun/Dockerfile" />
+          <option name="sourceFilePath" value="d4c/Dockerfile" />
         </settings>
       </deployment>
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue=".NET Launch Settings Profile.sun" />
-      <item itemvalue=".NET Launch Settings Profile.sun: IIS Express" />
-      <item itemvalue="Docker.sun/Dockerfile" />
+      <item itemvalue=".NET Launch Settings Profile.d4c" />
+      <item itemvalue=".NET Launch Settings Profile.d4c: IIS Express" />
+      <item itemvalue="Docker.d4c/Dockerfile: Compose Deployment" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Docker.sun/Dockerfile" />
+        <item itemvalue="Docker.d4c/Dockerfile: Compose Deployment" />
       </list>
     </recent_temporary>
   </component>
@@ -90,7 +93,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1650270259070</updated>
-      <workItem from="1650270272826" duration="2598000" />
+      <workItem from="1650270272826" duration="2814000" />
     </task>
     <task id="LOCAL-00001" summary="Setup">
       <created>1650270367909</created>

@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sun", "sun\sun.csproj", "{4DD71E0A-7D1C-4982-9315-0C29FF4A4E17}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "d4c", "d4c\d4c.csproj", "{4DD71E0A-7D1C-4982-9315-0C29FF4A4E17}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
