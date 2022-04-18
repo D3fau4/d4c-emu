@@ -9,7 +9,7 @@ public class Horizon
 {
     public HorizonClient horizon;
     public KeySet keys;
-    public static Horizon hos;
+    public static Horizon? hos;
     public SwitchFs ncafolder;
 
     public Horizon(string path, string ncasfolder = "contents")

@@ -1,4 +1,7 @@
+using System.Text;
+using System.Text.Json;
 using d4c.HOS;
+using LibHac.Tools.Fs;
 using Microsoft.AspNetCore.Mvc;
 
 namespace d4c.Controllers;
@@ -9,7 +12,7 @@ namespace d4c.Controllers;
 public class SunController : ControllerBase
 {
     [HttpGet("system_update_meta")]
-    public ActionResult<string> GetLastestUpdate(string device_id = "DEADCAFEBABEBEEF")
+    public ActionResult<SystemUpdateMeta> GetLastestUpdate(string device_id = "DEADCAFEBABEBEEF")
     {
         /* nintendo Headers */
         HttpContext.Response.Headers.Add("X-Content-Type-Options","nosniff");
@@ -23,8 +26,22 @@ public class SunController : ControllerBase
         if (!Horizon.ValidDeviceID(Convert.ToUInt64($"0x{device_id}",16)))
             return  StatusCode(StatusCodes.Status403Forbidden);
 
+        foreach (var nca in Horizon.hos.ncafolder.Titles.Values.OrderBy(x => x.Id))
+        {
+            if (nca.Id == 0x0100000000000816ul)
+            {
+                SystemUpdateMeta meta = new SystemUpdateMeta
+                {
+                    timestamp = (int) DateTime.Now.ToBinary()
+                };
+                meta.system_update_metas.Add(new SystemUpdateMetas("0100000000000816", nca.Version.Version));
+
+                return meta;
+            }
+            continue;
+        }
 
         // Return last update
-        return Ok("{\"timestamp\":1650278719,\"system_update_metas\":[{\"title_id\":\"0100000000000816\",\"title_version\":940572692}]}");
+        return  StatusCode(StatusCodes.Status404NotFound);
     }
 }
