@@ -1,5 +1,7 @@
-var builder = WebApplication.CreateBuilder(args);
+using d4c.HOS;
 
+var builder = WebApplication.CreateBuilder(args);
+var hos = new Horizon("prod.keys");
 // Add services to the container.
 
 builder.Services.AddControllers();

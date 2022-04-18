@@ -1,3 +1,4 @@
+using d4c.HOS;
 using Microsoft.AspNetCore.Mvc;
 
 namespace d4c.Controllers;
@@ -7,8 +8,7 @@ namespace d4c.Controllers;
 [Produces("application/json")]
 public class SunController : ControllerBase
 {
-    [HttpGet]
-    [Route("system_update_meta")]
+    [HttpGet("system_update_meta")]
     public ActionResult<string> GetLastestUpdate(string device_id = "DEADCAFEBABEBEEF")
     {
         /* nintendo Headers */
@@ -19,8 +19,11 @@ public class SunController : ControllerBase
         HttpContext.Response.Headers.Add("Cache-Control", "no-cache, no-store, must-revalidate");
         HttpContext.Response.Headers.Add("Connection", "keep-alive");
         /* nintendo Headers */
-        if (device_id.Length != 16)
+        
+        if (!Horizon.ValidDeviceID(Convert.ToUInt64($"0x{device_id}",16)))
             return  StatusCode(StatusCodes.Status403Forbidden);
+
+
         // Return last update
         return Ok("{\"timestamp\":1650278719,\"system_update_metas\":[{\"title_id\":\"0100000000000816\",\"title_version\":940572692}]}");
     }

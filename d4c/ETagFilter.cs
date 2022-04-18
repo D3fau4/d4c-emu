@@ -58,7 +58,7 @@ public static class ETagGenerator
         {
             var hash = md5.ComputeHash(data);
             string hex = BitConverter.ToString(hash);
-            return $"{hex.Replace("-", "")}:{DateTime.Now.ToBinary()}";
+            return $"{hex.Replace("-", "")}";
         }            
     }
 
