@@ -20,7 +20,7 @@ public class AtumnController : ControllerBase
         if (!Horizon.ValidDeviceID(Convert.ToUInt64($"0x{device_id}", 16)))
             return StatusCode(StatusCodes.Status403Forbidden);
 
-        foreach (var nca in Horizon.hos.ncafolder._Titles.OrderBy(x => x.Id))
+        foreach (var nca in Horizon.hos!.ncafolder._Titles.OrderBy(x => x.Id))
             if (nca.Id.Equals(Convert.ToUInt64($"0x{contentid}", 16)) &&
                 nca.Version.Version.Equals(Convert.ToUInt32($"{version}")))
             {
@@ -47,8 +47,7 @@ public class AtumnController : ControllerBase
         if (!Horizon.ValidDeviceID(Convert.ToUInt64($"0x{device_id}", 16)))
             return StatusCode(StatusCodes.Status403Forbidden);
 
-        foreach (var nca in Horizon.hos.ncafolder._Titles.OrderBy(x => x.Version.Version))
-        {
+        foreach (var nca in Horizon.hos!.ncafolder._Titles.OrderBy(x => x.Version.Version))
             if (nca.Id.Equals(Convert.ToUInt64($"0x{contentid}", 16)) &&
                 nca.Version.Version.Equals(Convert.ToUInt32($"{version}")))
             {
@@ -58,7 +57,6 @@ public class AtumnController : ControllerBase
                 return File(System.IO.File.ReadAllBytes(Path.Combine(Horizon.hos.NcaFolderPath, nca.MetaNca.Filename)),
                     "application/octet-stream");
             }
-        }
 
         return NotFound();
     }
@@ -76,7 +74,7 @@ public class AtumnController : ControllerBase
         if (!Horizon.ValidDeviceID(Convert.ToUInt64($"0x{device_id}", 16)))
             return StatusCode(StatusCodes.Status403Forbidden);
 
-        foreach (var nca in Horizon.hos.ncafolder._Titles.OrderBy(x => x.Id))
+        foreach (var nca in Horizon.hos!.ncafolder._Titles.OrderBy(x => x.Id))
             if (nca.Id.Equals(Convert.ToUInt64($"0x{contentid}", 16)) &&
                 nca.Version.Version.Equals(Convert.ToUInt32($"{version}")))
             {
@@ -102,7 +100,7 @@ public class AtumnController : ControllerBase
         HttpContext.Response.Headers.Add("x-nintendo-akamai-reference-id", "0.7e251102.1650278892.589bfbdb");
         /* nintendo Headers */
 
-        foreach (var nca in Horizon.hos.ncafolder.Ncas.Values)
+        foreach (var nca in Horizon.hos!.ncafolder.Ncas.Values)
             if (nca.NcaId.ToLower().Equals(NcaId))
             {
                 HttpContext.Response.Headers.Add("X-Nintendo-Content-ID", nca.NcaId);
@@ -123,7 +121,7 @@ public class AtumnController : ControllerBase
         HttpContext.Response.Headers.Add("x-nintendo-akamai-reference-id", "0.7e251102.1650278892.589bfbdb");
         /* nintendo Headers */
 
-        foreach (var nca in Horizon.hos.ncafolder.Ncas.Values)
+        foreach (var nca in Horizon.hos!.ncafolder.Ncas.Values)
             if (nca.NcaId.ToLower().Equals(NcaId))
             {
                 HttpContext.Response.Headers.Add("X-Nintendo-Content-ID", nca.NcaId);
@@ -142,7 +140,7 @@ public class AtumnController : ControllerBase
     {
         /* nintendo Headers */
         HttpContext.Response.Headers.Add("x-nintendo-akamai-reference-id", "0.7e251102.1650278892.589bfbdb");
-        foreach (var nca in Horizon.hos.ncafolder.Ncas.Values)
+        foreach (var nca in Horizon.hos!.ncafolder.Ncas.Values)
             if (nca.NcaId.ToLower().Equals(NcaId))
             {
                 HttpContext.Response.Headers.Add("X-Nintendo-Content-ID", nca.NcaId);

@@ -2,13 +2,13 @@ namespace d4c.HOS;
 
 public class SystemUpdateMeta
 {
-    public int timestamp { get; set; }
-    public IList<SystemUpdateMetas> system_update_metas { get; set; }
-
     public SystemUpdateMeta()
     {
         system_update_metas = new List<SystemUpdateMetas>();
     }
+
+    public int timestamp { get; set; }
+    public IList<SystemUpdateMetas> system_update_metas { get; set; }
 }
 
 public class SystemUpdateMetas
