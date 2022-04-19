@@ -8,9 +8,14 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="LibHac" Version="0.16.1" />
         <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="6.0.4" />
-        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Reference Include="LibHac">
+        <HintPath>DLL\LibHac.dll</HintPath>
+      </Reference>
     </ItemGroup>
 
 </Project>

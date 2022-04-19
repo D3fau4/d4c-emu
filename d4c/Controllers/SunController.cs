@@ -23,7 +23,7 @@ public class SunController : ControllerBase
         if (!Horizon.ValidDeviceID(Convert.ToUInt64($"0x{device_id}", 16)))
             return StatusCode(StatusCodes.Status403Forbidden);
 
-        foreach (var nca in Horizon.hos.ncafolder.Titles.Values.OrderByDescending(x => x.Version.Version))
+        foreach (var nca in Horizon.hos.ncafolder._Titles.OrderByDescending(x => x.Version.Version))
             if (nca.Id == 0x0100000000000816ul)
             {
                 var meta = new SystemUpdateMeta

@@ -1,8 +1,14 @@
 using System.Security.Cryptography;
 using LibHac;
+using LibHac.Common;
 using LibHac.Common.Keys;
+using LibHac.Fs;
+using LibHac.Fs.Fsa;
 using LibHac.FsSystem;
 using LibHac.Tools.Fs;
+using LibHac.Tools.FsSystem;
+using LibHac.Tools.Ncm;
+using LibHac.Util;
 
 namespace d4c.HOS;
 
