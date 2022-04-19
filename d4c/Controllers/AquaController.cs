@@ -18,7 +18,7 @@ public class AquaController : ControllerBase
         if (!Horizon.ValidDeviceID(Convert.ToUInt64($"0x{device_id}", 16)))
             return StatusCode(StatusCodes.Status403Forbidden);
 
-        foreach (var nca in Horizon.hos.ncafolder.Titles.Values.OrderBy(x => x.Id))
+        foreach (var nca in Horizon.hos.ncafolder.Titles.Values.OrderByDescending(x => x.Version.Version))
             if (nca.Id == 0x0100000000000816ul)
             {
                 var meta = new required_system_update_meta
