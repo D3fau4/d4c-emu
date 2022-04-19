@@ -24,7 +24,6 @@ public class SunController : ControllerBase
             return StatusCode(StatusCodes.Status403Forbidden);
 
         foreach (var nca in Horizon.hos.ncafolder.Titles.Values.OrderBy(x => x.Id))
-        {
             if (nca.Id == 0x0100000000000816ul)
             {
                 var meta = new SystemUpdateMeta
@@ -35,7 +34,6 @@ public class SunController : ControllerBase
 
                 return Ok(meta);
             }
-        }
 
         // Return last update
         return StatusCode(StatusCodes.Status404NotFound);

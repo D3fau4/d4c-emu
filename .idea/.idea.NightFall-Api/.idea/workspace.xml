@@ -6,7 +6,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d572d94d-ad56-4c96-8228-9c4c749b1aed" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/d4c/log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.NightFall-Api/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NightFall-Api/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/d4c/Controllers/AtumnController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/d4c/Controllers/AtumnController.cs" afterDir="false" />
     </list>
@@ -120,6 +119,7 @@
       <workItem from="1650305116672" duration="710000" />
       <workItem from="1650316572965" duration="434000" />
       <workItem from="1650317045772" duration="2432000" />
+      <workItem from="1650362366226" duration="1156000" />
     </task>
     <task id="LOCAL-00001" summary="Setup">
       <created>1650270367909</created>
@@ -159,7 +159,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/d4c/Controllers/AtumnController.cs</url>
-          <line>151</line>
+          <line>156</line>
           <properties documentPath="$PROJECT_DIR$/d4c/Controllers/AtumnController.cs" initialLine="152" containingFunctionPresentation="method 'GetProgramNca'">
             <startOffsets>
               <option value="6397" />
