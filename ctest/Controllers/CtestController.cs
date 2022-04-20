@@ -8,6 +8,9 @@ public class CtestController : ControllerBase
     [HttpGet("/")]
     public ActionResult<string> GetCtest()
     {
-        return Ok("ok");
+        if (HttpContext.Request.Headers.UserAgent.Equals("NX NIFM/00"))
+            return Ok("ok");
+        else
+            return Forbid();
     }
 }
