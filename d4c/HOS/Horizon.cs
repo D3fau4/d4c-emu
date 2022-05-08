@@ -8,11 +8,11 @@ namespace d4c.HOS;
 
 public class Horizon
 {
+    public static Horizon? hos;
     public HorizonClient horizon;
     public KeySet keys;
-    public string NcaFolderPath;
-    public static Horizon? hos;
     public SwitchFs ncafolder;
+    public string NcaFolderPath;
 
     public Horizon(string path, string ncasfolder = "contents")
     {
@@ -32,11 +32,11 @@ public class Horizon
 
     public static bool ValidDeviceID(ulong deviceid)
     {
-        UInt32 fab = (UInt32) (deviceid >> 50) & 0x3F;
-        UInt32 clot0 = (UInt32) (deviceid >> 24) & 0x3FFFFFF;
-        UInt32 wafer = (UInt32) (deviceid >> 18) & 0x3F;
-        UInt32 x_coord = (UInt32) (deviceid >> 9) & 0x1FF;
-        Int32 y_coord = (Int32) (deviceid >> 0) & 0x1FF;
+        var fab = (uint) (deviceid >> 50) & 0x3F;
+        var clot0 = (uint) (deviceid >> 24) & 0x3FFFFFF;
+        var wafer = (uint) (deviceid >> 18) & 0x3F;
+        var x_coord = (uint) (deviceid >> 9) & 0x1FF;
+        var y_coord = (int) (deviceid >> 0) & 0x1FF;
 
         if (fab != 25)
             return false;
@@ -52,10 +52,12 @@ public class Horizon
 
     public static string SHA256CheckSum(string filePath)
     {
-        using (SHA256 SHA256 = SHA256Managed.Create())
+        using (var hash = SHA256.Create())
         {
-            using (FileStream fileStream = File.OpenRead(filePath))
-                return BitConverter.ToString(SHA256.ComputeHash(fileStream)).Replace("-", "");
+            using (var fileStream = File.OpenRead(filePath))
+            {
+                return BitConverter.ToString(hash.ComputeHash(fileStream)).Replace("-", "");
+            }
         }
     }
 }

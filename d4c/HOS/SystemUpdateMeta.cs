@@ -13,8 +13,8 @@ public class SystemUpdateMeta
 
 public class SystemUpdateMetas
 {
-    public string title_id;
-    public uint title_version;
+    public string title_id = String.Empty;
+    public uint title_version = 0;
 
     public SystemUpdateMetas(string s, uint versionVersion)
     {
@@ -25,6 +25,6 @@ public class SystemUpdateMetas
 
 public class required_system_update_meta
 {
-    public string contents_delivery_required_title_id;
-    public uint contents_delivery_required_title_version;
+    public string contents_delivery_required_title_id = String.Empty;
+    public uint contents_delivery_required_title_version = 0;
 }
