@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "d4c", "d4c\d4c.csproj", "{4
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ctest", "ctest\ctest.csproj", "{198DE570-2044-4428-BF88-A81D39377CD1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bugyo", "bugyo\bugyo.csproj", "{75CFFB76-602C-45EC-BDFB-B68D7FE82A46}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{198DE570-2044-4428-BF88-A81D39377CD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{198DE570-2044-4428-BF88-A81D39377CD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{198DE570-2044-4428-BF88-A81D39377CD1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75CFFB76-602C-45EC-BDFB-B68D7FE82A46}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75CFFB76-602C-45EC-BDFB-B68D7FE82A46}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75CFFB76-602C-45EC-BDFB-B68D7FE82A46}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75CFFB76-602C-45EC-BDFB-B68D7FE82A46}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
