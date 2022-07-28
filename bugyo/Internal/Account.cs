@@ -16,11 +16,11 @@ public class Account
     public bool shop_analytics_opted_in { get; set; }
     public bool ecash_integrated { get; set; }
     public bool nnid_linked { get; set; }
+    public ParentalControl parental_control { get; set; }
 
     public struct ParentalControl
     {
         public bool is_shopping_restricted { get; set; }
         public bool is_game_rating_restricted { get; set; }
     }
-    public ParentalControl parental_control { get; set; }
 }

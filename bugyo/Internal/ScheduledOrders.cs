@@ -2,9 +2,10 @@
 
 public class ScheduledOrders
 {
+    public Orders orders = new();
+
     public struct Orders
     {
         public List<string> order;
-    };
-    public Orders orders = new Orders();
+    }
 }

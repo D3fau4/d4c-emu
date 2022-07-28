@@ -5,13 +5,16 @@ namespace bugyo.Controllers;
 
 [ApiController]
 [Produces("application/json")]
+[Route("shogun/")]
 public class ShogunController : ControllerBase
 {
-    [HttpPost("shogun/v1/my/account")]
+    #region /my/
+
+    [HttpPost("v1/my/account")]
     public ActionResult<Account> GetAccount()
     {
-        Account nnAccount = new Account();
-        
+        var nnAccount = new Account();
+
         nnAccount.shop_account_id = 0000000000;
         nnAccount.na_id = "ffffffffffffffff";
         nnAccount.screen_name = "ll•••@z••••";
@@ -27,19 +30,32 @@ public class ShogunController : ControllerBase
         nnAccount.ecash_integrated = false;
         nnAccount.nnid_linked = false;
 
-        Account.ParentalControl parental = new Account.ParentalControl();
+        var parental = new Account.ParentalControl();
         parental.is_game_rating_restricted = false;
         parental.is_shopping_restricted = false;
 
         nnAccount.parental_control = parental;
-        
+
         return Ok(nnAccount);
     }
-    [HttpGet("shogun/v1/my/scheduled_orders")]
+
+    [HttpGet("v1/my/scheduled_orders")]
     public ActionResult<ScheduledOrders> GetScheduledorders()
     {
-        ScheduledOrders nnSchedule = new ScheduledOrders();
+        var nnSchedule = new ScheduledOrders();
         nnSchedule.orders.order = new List<string>();
         return Ok(nnSchedule);
     }
+
+    [HttpPost("v1/my/tickets/rights")]
+    public ActionResult<string> GetTickets()
+    {
+        return Ok("[]");
+    }
+
+    #endregion
+
+    #region /country/
+
+    #endregion
 }

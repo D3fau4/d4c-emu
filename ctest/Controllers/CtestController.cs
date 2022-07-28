@@ -10,7 +10,6 @@ public class CtestController : ControllerBase
     {
         if (HttpContext.Request.Headers.UserAgent.Equals("NX NIFM/00"))
             return Ok("ok");
-        else
-            return Forbid();
+        return Forbid();
     }
 }

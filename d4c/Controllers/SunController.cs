@@ -28,7 +28,7 @@ public class SunController : ControllerBase
             {
                 var meta = new SystemUpdateMeta
                 {
-                    timestamp = (int) DateTime.Now.ToBinary()
+                    timestamp = (int)DateTime.Now.ToBinary()
                 };
                 meta.system_update_metas.Add(new SystemUpdateMetas("0100000000000816", nca.Version.Version));
 
