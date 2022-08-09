@@ -22,7 +22,6 @@ public class dauthController : ControllerBase
         string challenge = "InNjA125bIEZ8K6QpXi4yplEPNCgrYP77X7Zz9SItYY",
         string client_id = "", bool ist = false, string key_generation = "14",
         string system_version = "", string mac = "")
-
     {
         var message = new DeviceAuthTokenMessage();
         message.expires_in = 86400;
