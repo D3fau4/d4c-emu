@@ -11,7 +11,7 @@ public class ShogunController : ControllerBase
     #region /my/
 
     [HttpPost("v1/my/account")]
-    public ActionResult<Account> GetAccount()
+    public ActionResult<Account> GetAccount(int shop_id, string redirect_url = "nintendo://shop.nx.sys", string country = "EN", string lang = "en")
     {
         var nnAccount = new Account();
 
@@ -56,6 +56,14 @@ public class ShogunController : ControllerBase
     #endregion
 
     #region /country/
+    
+    [HttpGet("v1/country")]
+    public ActionResult<Country> GetCountryConfig(int shop_id, string lang, string country)
+    {
+        var nnCountry = new Country();
+        nnCountry.id = 105;
+        return Ok(nnCountry);
+    }
 
     #endregion
 }
